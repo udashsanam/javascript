@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <label>First Number</label>
+        <input type="number" id="firstNumber" > <br>
+        <label> Second Number</label>
+        <input type="number" id="secondNumber" > <br>
+        <input type="submit" value="submit" onsubmit=addTwoNUmber()>
+    </form>
+
+    <div id="result">
+
+    </div>
+
+    <script>
+        function myfunc() {
+            console.log("I am not arrow function");
+        }
+        myfunc();
+
+
+
+        let iAmArrowFunction = (name) => {
+            console.log("my name is " + name);
+        }
+
+        iAmArrowFunction("Sanam Udash");
+
+        let addTwoNUmber = () => {
+            let x = document.getElementById("firstNumber").value;
+            let y = document.getElementById("secondNumber").value;
+            let z = x + y;
+            document.getElementById("result").innerHTML = z;
+            console.log(z);
+        }
+        addTwoNUmber()
+
+        // arrow function with only one parameter 
+        let square = (number) => number*number;
+
+        let squarenew = (number) => {
+            return number* number;
+        }
+
+        console.log(square(45));
+        console.log(squarenew(45));
+
+
+    </script>
+</body>
+
+</html>

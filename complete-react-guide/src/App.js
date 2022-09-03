@@ -3,7 +3,7 @@ import './App.css';
 // import ExpenseItem from './components/ExpenseItems';
 import Expenses from './components/Expenses/Expenses';
 
-function App() {
+const App = () => {
   const expenses = [
     {
       title:"food",

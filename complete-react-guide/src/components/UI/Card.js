@@ -3,7 +3,7 @@ import  './Card.css';
 // this is the reuable wrapper component for 
 // we are reusing this for the css reuse 
 // this will improve code reusability 
-function Card(props) {
+const Card = (props) => {
 
     // getting the class name from the parent component 
     const classes = 'card ' + props.className;

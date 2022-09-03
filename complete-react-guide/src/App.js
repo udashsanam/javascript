@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 // import ExpenseItem from './components/ExpenseItems';
 import Expenses from './components/Expenses';
@@ -25,6 +26,11 @@ function App() {
       date: new Date(2022, 2, 16)
     }
   ];
+
+  // this is how react is crating the html in behind the scene 
+  // return React.createElement('div', {}, 
+  // React.createElement('h2', {}, "Lets learn readfct "), 
+  // React.createElement(Expenses, {items: expenses}));
 
   return (
      

@@ -2,56 +2,76 @@ import { useState } from "react";
 import "./ExpenseForm.css";
 const ExpenseForm = (props) => {
   // state which will store the entered title with defaul empty string
-  // const [enteredTitle, setEnteredTitle] = useState("");
-  // const [enteredAmount, setEnteredAmount] = useState("");
-  // const [enteredDate, setEnteredDate] = useState("");
+  const [enteredTitle, setEnteredTitle] = useState("");
+  const [enteredAmount, setEnteredAmount] = useState("");
+  const [enteredDate, setEnteredDate] = useState("");
   // const [items, setItems] = useState(props.items);
 
-  const [userInput, setUserInput] = useState({
-    enteredTitle:'',
-    enteredAmount:'',
-    enteredDate:''
-  });
+  // const [userInput, setUserInput] = useState({
+  //   enteredTitle:'',
+  //   enteredAmount:'',
+  //   enteredDate:''
+  // });
 
   // event object is default object from event handler like onchange, onPress etc
   const titleChangeHandler = (event) => {
     // setting the state value to enterd title
-    // setEnteredTitle(event.target.value);
+    setEnteredTitle(event.target.value);
+
     // console.log(enteredTitle);
     // console.log(items);
-    setUserInput({
-      ...userInput,
-      enteredTitle:event.target.value
-    });
+    // setUserInput({
+    //   ...userInput,
+    //   enteredTitle:event.target.value
+    // });
   };
 
   const amountChangeHandler = (event) => {
-    // setEnteredAmount(event.target.value);
+    setEnteredAmount(event.target.value);
     // console.log(enteredAmount);
-    setUserInput({
-      ...userInput,
-      enteredAmount:event.target.value
-    })
+
+    // setUserInput({
+    //   ...userInput,
+    //   enteredAmount:event.target.value
+    // });
+
+
+
   };
 
   const dateChangeHandler = (event) => {
-    // setEnteredDate(event.target.value);
+    setEnteredDate(event.target.value);
+
     // console.log(enteredDate);
-  
-  
-    setUserInput({
-      ...userInput,
-      enteredDate:event.target.value
-    })
+    // setUserInput({
+    //   ...userInput,
+    //   enteredDate:event.target.value
+    // })
+
+    // this method is used when the new state is depend on the previous state 
+    // setUserInput( (prevStatue) => {
+    //     return {
+    //       ...useState,
+    //       enteredDate:event.target.value
+    //     };
+    // });
   };
 
-  const clickHandler = (event) => {
+  const submitHandler = (event) => {
     event.preventDefault();
-    console.log(userInput);
+    const expenseData = {
+      title: enteredTitle,
+      amount: parseFloat(enteredAmount),
+      date: new Date(enteredDate)
+    }
+
+    // console.log(expenseData);
+    props.onSaveExpenseData(expenseData);
+
   };
 
   return (
-    <form className="">
+    <form className="" onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label> Title</label>
@@ -77,7 +97,7 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
-        <button type="submit" onClick={clickHandler}>
+        <button type="submit" onClick={submitHandler}>
           {" "}
           Add New Expense
         </button>

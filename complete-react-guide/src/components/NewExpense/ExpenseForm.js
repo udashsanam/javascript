@@ -50,9 +50,9 @@ const ExpenseForm = (props) => {
     // })
 
     // this method is used when the new state is depend on the previous state 
-    // setUserInput( (prevStatue) => {
+    // setUserInput( (prevState) => {
     //     return {
-    //       ...useState,
+    //       ...preState,
     //       enteredDate:event.target.value
     //     };
     // });

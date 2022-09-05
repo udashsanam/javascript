@@ -56,11 +56,22 @@ const App = () => {
   // React.createElement('h2', {}, "Lets learn readfct "), 
   // React.createElement(Expenses, {items: expenses}));
 
+  const addExpenseHandler = (expense) => {
+    console.log(expense.title);
+    const  data = {
+      title: expense.title,
+      amount: expense.amount,
+      date: expense.date
+    }
+
+    console.log(expenses);
+  }
+
   return (
      
     <div >
-      <NewExpense  items = {expenses} />
-    <Expenses items={expenses}></Expenses>
+      <NewExpense   onExpenseSave = {addExpenseHandler} />
+    <Expenses items={expenses} ></Expenses>
     </div>
   );
 }

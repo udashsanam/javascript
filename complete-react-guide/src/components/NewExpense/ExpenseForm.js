@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./ExpenseForm.css";
 const ExpenseForm = (props) => {
+  
   // state which will store the entered title with defaul empty string
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");

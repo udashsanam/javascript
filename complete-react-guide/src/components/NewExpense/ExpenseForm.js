@@ -2,37 +2,52 @@ import { useState } from "react";
 import "./ExpenseForm.css";
 const ExpenseForm = (props) => {
   // state which will store the entered title with defaul empty string
-  const [enteredTitle, setEnteredTitle] = useState("");
-  const [enteredAmount, setEnteredAmount] = useState("");
-  const [enteredDate, setEnteredDate] = useState("");
-  const [items, setItems] = useState(props.items);
+  // const [enteredTitle, setEnteredTitle] = useState("");
+  // const [enteredAmount, setEnteredAmount] = useState("");
+  // const [enteredDate, setEnteredDate] = useState("");
+  // const [items, setItems] = useState(props.items);
+
+  const [userInput, setUserInput] = useState({
+    enteredTitle:'',
+    enteredAmount:'',
+    enteredDate:''
+  });
 
   // event object is default object from event handler like onchange, onPress etc
   const titleChangeHandler = (event) => {
     // setting the state value to enterd title
-    setEnteredTitle(event.target.value);
+    // setEnteredTitle(event.target.value);
     // console.log(enteredTitle);
     // console.log(items);
+    setUserInput({
+      ...userInput,
+      enteredTitle:event.target.value
+    });
   };
 
   const amountChangeHandler = (event) => {
-    setEnteredAmount(event.target.value);
+    // setEnteredAmount(event.target.value);
     // console.log(enteredAmount);
+    setUserInput({
+      ...userInput,
+      enteredAmount:event.target.value
+    })
   };
 
   const dateChangeHandler = (event) => {
-    setEnteredDate(event.target.value);
+    // setEnteredDate(event.target.value);
     // console.log(enteredDate);
+  
+  
+    setUserInput({
+      ...userInput,
+      enteredDate:event.target.value
+    })
   };
 
-  const clickHandler = () => {
-    const item = {
-      title: { enteredTitle },
-      amount: { enteredAmount },
-      date: { enteredDate },
-    };
-    setItems({ ...items, ...item });
-    console.log(items);
+  const clickHandler = (event) => {
+    event.preventDefault();
+    console.log(userInput);
   };
 
   return (

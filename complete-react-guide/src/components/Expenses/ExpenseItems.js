@@ -8,27 +8,26 @@ const ExpenseItem = (props) => {
   // const expenseAmount = 234.45;
 
 
-  const [title, setTitle] = useState(props.title);
+  // const [title, setTitle] = useState(props.title);
 
   // eventhaldler funciton 
-  const clickHandler = () => {
+  // const clickHandler = () => {
 
-    // this will call the jsx again and change the value to the variable into the react 
-    setTitle('update');
+  //   // this will call the jsx again and change the value to the variable into the react 
+  //   setTitle('update');
   
-    console.log(title);
-  }
+  //   console.log(title);
+  // }
 
   return (
     <Card className= "expense-item">
       {/* <div>   {(props.date).toISOString()} </div> */}
       <ExpenseDate date = {props.date} > </ExpenseDate>
       <div className= "expense-item__description">
-        <h2> {title}</h2>
+        <h2> {props.title}</h2>
         {/* we are using reusable component card for css here also  */}
         <Card className="expense-item__price">  Rs {props.amount} </Card>
       </div>
-      <button onClick={clickHandler}> change title </button>
 
     </Card>
   );

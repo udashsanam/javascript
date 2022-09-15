@@ -21,10 +21,12 @@ const Expenses = ({ expenses }) => {
         onChangeFilter={onChangeHandler}
       />
       {/* ternary operator used  */}
-      {filteredExpenses.length === 0 ? (
-        <p> no expense found</p>
-      ) : (
-        filteredExpenses.map((expense, index) => {
+
+      {/* if the condition is true then only <p> will execute </p> */}
+      {filteredExpenses.length ===0 && <p> there is no expense in selected year</p>}
+      {/* && trick  */}
+      
+      {filteredExpenses.length > 0 && ( filteredExpenses.map((expense, index) => {
           // here key is passed because react will rerender all the repeated component whene the componen is called
           return (
             <ExpenseItem
@@ -34,8 +36,7 @@ const Expenses = ({ expenses }) => {
               amount={expense.amount}
             />
           );
-        })
-      )}
+        }))}
     </Card>
   );
 };

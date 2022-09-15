@@ -10,22 +10,32 @@ const Expenses = ({ expenses }) => {
   const onChangeHandler = (selectedValue) => {
     setSelectedYear(selectedValue);
   };
+  // this code is filtering the expenses with the inbuild funtion of the java script file 
+  const filteredExpenses = expenses.filter((expense) => {
+    return expense.date.getFullYear().toString() === selectedYear;
+  });
   return (
     <Card className="expenses">
       <ExpensesFilter
         selectedYear={selectedYear}
         onChangeFilter={onChangeHandler}
       />
-      {
-        expenses.map( (expense,index)=> {
-          // here key is passed because react will rerender all the repeated component whene the componen is called 
-          return  <ExpenseItem 
-          key = {expense.id}
-           title = {expense.title} 
-           date = {expense.date}
-            amount = {expense.amount} />
+      {/* ternary operator used  */}
+      {filteredExpenses.length === 0 ? (
+        <p> no expense found</p>
+      ) : (
+        filteredExpenses.map((expense, index) => {
+          // here key is passed because react will rerender all the repeated component whene the componen is called
+          return (
+            <ExpenseItem
+              key={expense.id}
+              title={expense.title}
+              date={expense.date}
+              amount={expense.amount}
+            />
+          );
         })
-      }
+      )}
     </Card>
   );
 };

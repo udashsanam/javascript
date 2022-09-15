@@ -12,13 +12,13 @@ const App = () => {
       id:'sdf',
       title:"food",
       amount:2345.45,
-      date: new Date(2022, 2, 13)
+      date: new Date(2021, 2, 13)
     },
     {
       id:'dkdf',
       title:"cloth",
       amount:23452.45,
-      date: new Date(2022, 2, 14)
+      date: new Date(2020, 2, 14)
     },
     {
       id:'3ls',

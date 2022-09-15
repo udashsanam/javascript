@@ -14,29 +14,31 @@ const Expenses = ({ expenses }) => {
   const filteredExpenses = expenses.filter((expense) => {
     return expense.date.getFullYear().toString() === selectedYear;
   });
+
+    let contentToLoad = <p> no expense for selected year </p>
+
+    if(filteredExpenses.length > 0 ){
+      contentToLoad =  filteredExpenses.map((expense, index) => {
+        // here key is passed because react will rerender all the repeated component whene the componen is called
+        return (
+          <ExpenseItem
+            key={expense.id}
+            title={expense.title}
+            date={expense.date}
+            amount={expense.amount}
+          />
+        );
+      })
+    }
+
   return (
     <Card className="expenses">
       <ExpensesFilter
         selectedYear={selectedYear}
         onChangeFilter={onChangeHandler}
       />
-      {/* ternary operator used  */}
-
-      {/* if the condition is true then only <p> will execute </p> */}
-      {filteredExpenses.length ===0 && <p> there is no expense in selected year</p>}
-      {/* && trick  */}
-      
-      {filteredExpenses.length > 0 && ( filteredExpenses.map((expense, index) => {
-          // here key is passed because react will rerender all the repeated component whene the componen is called
-          return (
-            <ExpenseItem
-              key={expense.id}
-              title={expense.title}
-              date={expense.date}
-              amount={expense.amount}
-            />
-          );
-        }))}
+      {/* all the logic for this is written on the above part  */}
+     {contentToLoad}
     </Card>
   );
 };
